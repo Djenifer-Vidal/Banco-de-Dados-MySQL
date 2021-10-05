@@ -63,7 +63,6 @@ select * from carrinho where produto ='nescau';
 select * from carrinho where produto like 'f%';
 
 -- GRUD update
--- ATENÇÃO! Não esqueça de selecionar o where e id no update
 update carrinho set quantidade ='5' where codigo = 2;
 
 insert into carrinho(produto,quantidade,valor)
@@ -72,7 +71,6 @@ value ('Groselia',1,8.99);
 update carrinho set produto='Suco de Uva',quantidade=1,valor=10.85 where codigo = 6;
 
 -- GRUD Delete
--- ATENÇÃO! Não esqueça de selecionar o where e id no update
 delete from carrinho where codigo = 3;
 
 select * from carrinho;

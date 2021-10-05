@@ -2,6 +2,7 @@
 Agenda de contatos
 @author Cássio Rodrigues Braga
 */
+
 -- Exibir banco de dados do servidor
 show databases;
 -- Criar um novo banco de dados
@@ -15,13 +16,6 @@ use dbagenda;
 show tables;
 
 -- Criando uma tabela
--- Toda tabela precisa ter uma chave primária (PK)
--- int (Tipos de dados) -> números inteiros
--- primary key -> transforma este campo em chave primária
--- auto_increment -> numeração automática
--- varchar (Tipo de dados equivalente a string) (50) número máximo de caracteres
--- not null -> preenchimento obrigatório
--- unique -> não permite valores duplicados na tabela
 create table contatos(
 	id int primary key auto_increment,
     nome varchar(50) not null,
@@ -51,14 +45,12 @@ alter table contatos drop column obs;
 -- excluir a tabela
 drop table contatos;
 
--- CRUD (Create Read Update Delete)
--- operações básicas do banco de dados
 
 -- CRUD Create
 insert into contatos(nome,fone,email)
 values ('Cassio Braga','99999-4444','crb@mail.com');
+
 -- CRUD Read
--- selecionar todos os registros (dados) da tabela
 select * from contatos;
 insert into contatos(nome,fone,email)
 values ('Fox Mulder','88888-5555','fox@mail.com');

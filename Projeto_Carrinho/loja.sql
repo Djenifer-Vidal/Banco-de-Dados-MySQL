@@ -122,4 +122,57 @@ create table carrinho(
 	foreign key (pedido) references pedidos(pedido),
     foreign key (codigo) references produtos(codigo)
 );
+
+use dbloja;
     
+select * from carrinho;
+
+-- inserindo produtos no carrinho
+insert into carrinho(pedido,codigo,quantidade)
+	values (1,1,5);
+insert into carrinho(pedido,codigo,quantidade)
+	values (1,2,4);
+    
+select * from carrinho;
+
+-- exibir o carrinho
+select
+pedidos.pedido,
+carrinho.codigo as Código,
+produtos.produto,
+carrinho.quantidade as Quantidade,
+produtos.valor as Valor,
+produtos.valor * carrinho.quantidade as Sub_Total
+from (carrinho inner join pedidos on carrinho.pedido = pedidos.pedido)
+inner join produtos on carrinho.codigo = produtos.codigo;
+
+-- total do carrinho
+select sum(produtos.valor * carrinho.quantidade) as Total
+from carrinho inner join produtos on carrinho.codigo = produtos.codigo;
+
+-- atualizar o banco de dados apos o fechanento do pedido
+update carrinho
+inner join produtos
+on carrinho.codigo = produtos.codigo
+set produtos.estoque = produtos.estoque - carrinho.quantidade
+where carrinho.quantidade >0;
+
+select * from produtos;
+
+-- repondo estoque
+insert into produtos(codigo,produto,estoque)
+	values (1,1,10);
+insert into produtos(codigo,produto,estoque)
+	values (1,2,10);
+    
+select * from produtos;
+
+use dbloja;
+
+
+
+
+
+
+
+
